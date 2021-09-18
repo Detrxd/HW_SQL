@@ -36,7 +36,7 @@ public class PageTest {
     }
 
     @Test
-    void shouldLoginActiveUser(){
+    void shouldLoginActiveUser() {
         successAuthorization();
     }
 
@@ -49,11 +49,11 @@ public class PageTest {
     @Test
     void shouldFallDownForManyWrongPass() {
         LoginPage loginPage = new LoginPage();
-        loginPage.invalidLogin(DataHelper.getAuthInfo2().getLogin(), DataGenerator.getRandomPassword());
-        loginPage.invalidLogin(DataHelper.getAuthInfo2().getLogin(), DataGenerator.getRandomPassword());
-        loginPage.getBlockMessage(DataHelper.getAuthInfo2().getLogin(), DataGenerator.getRandomPassword());
+        loginPage.invalidLogin(DataHelper.getAuthInfo().getLogin(), DataGenerator.getRandomPassword());
+        loginPage.invalidLogin(DataHelper.getAuthInfo().getLogin(), DataGenerator.getRandomPassword());
+        loginPage.invalidLogin(DataHelper.getAuthInfo().getLogin(), DataGenerator.getRandomPassword());
         var actual = DataManager.getUserStatusByLogin(DataHelper.getAuthInfo().getLogin());
-        assertNotEquals(actual, "active");
+        assertNotEquals("active", actual);
     }
 
     @Test
@@ -64,20 +64,21 @@ public class PageTest {
     }
 
     @Test
-    void shouldSendEmptyField(){
+    void shouldSendEmptyField() {
         var authInfo = DataHelper.getAuthInfo();
         LoginPage loginPage = new LoginPage();
         var verifyPage = loginPage.validLogin(authInfo.getLogin(), authInfo.getPassword());
         verifyPage.sendEmptyField();
     }
+
     @Test
-    void shouldFallDownForManyWrongAuthCode(){
+    void shouldFallDownForManyWrongAuthCode() {
         var authInfo = DataHelper.getAuthInfo2();
         LoginPage loginPage = new LoginPage();
-        var verifyPage = loginPage.validLogin(authInfo.getLogin(),authInfo.getPassword());
+        var verifyPage = loginPage.validLogin(authInfo.getLogin(), authInfo.getPassword());
         verifyPage.invalidVerify(DataGenerator.getRandomAuthCode());
         verifyPage.invalidVerify(DataGenerator.getRandomAuthCode());
         verifyPage.getBlockMessage(DataGenerator.getRandomAuthCode());
-        assertNotEquals(DataManager.getUserStatusByLogin(DataHelper.getAuthInfo().getLogin()),"active");
+        assertNotEquals("active", DataManager.getUserStatusByLogin(DataHelper.getAuthInfo().getLogin()));
     }
 }

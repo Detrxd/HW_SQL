@@ -1,7 +1,6 @@
 package ru.netology.page;
 
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.data.DataGenerator;
 import ru.netology.data.DataHelper;
 
 
@@ -34,7 +33,7 @@ public class VerificationPage {
                 "Ошибка! Неверно указан код! Попробуйте ещё раз."));
     }
 
-    public LoginPage getBlockMessage (String authCode) {
+    public LoginPage getBlockMessage(String authCode) {
         codeField.setValue(authCode);
         verifyButton.click();
         errorMessage.shouldBe(visible).shouldHave(exactText("Ошибка!\n" +

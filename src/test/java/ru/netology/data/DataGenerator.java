@@ -17,13 +17,13 @@ public class DataGenerator {
         return password;
     }
 
-    public static String getRandomAuthCode(){
+    public static String getRandomAuthCode() {
         String authCode = faker.numerify("######");
         return authCode;
     }
 
-    public static String getRandomUserId(){
-        String userId  = faker.numerify("######");
+    public static String getRandomUserId() {
+        String userId = faker.numerify("######");
         return userId;
     }
 
