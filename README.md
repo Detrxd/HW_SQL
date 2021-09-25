@@ -1,7 +1,32 @@
-*Запуск SUT*
 
-java -jar E:\Projects(Study)\SQL\artifacts\app-deadline.jar -P:jdbc.url=jdbc:mysql://localhost:3306/app -P:jdbc.user=app -P:jdbc.password=qwerty123
+# SQL 
 
-*Запуск SQL* 
+## Начало работы
 
-docker-compose exec mysql mysql -u app -p app
+### Prerequisites
+
+Перечень установленного ПО:
+
+* Среда разработки IntelliJ IDEA Community Edition.
+* Docker Compose - средство, разработанное для помощи в определении
+  и совместном использовании многоконтейнерных приложений.
+* Интернет браузер Google Chrome 
+
+_Описание основных команд для запуска проекта:_
+
+Запуск тестируемого приложения происходит посредством ввода команды в терминал
+
+**Запуск SUT**
+
+```
+java -jar artifacts\app-deadline.jar -P:jdbc.url=jdbc:mysql://localhost:3306/app -P:jdbc.user=app -P:jdbc.password=qwerty123
+```
+
+После запуска приложения необходимо запустить контейнер, команда запуска контейнера следующая: 
+
+**Запуск Docker-compose(контейнер)**
+
+```
+docker-compose up -d 
+```
+
